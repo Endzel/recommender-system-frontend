@@ -1,0 +1,65 @@
+// Fonts
+$main-font: normal 400 16px Roboto;
+
+$extrasmall: 10px;
+$xsmall: 13px;
+$small: 16px;
+$smedium: 20px;
+$medium: 24px;
+$slarge: 28px;
+$large: 32px;
+
+// Colors
+$black: #17202A;
+$grey: #666666;
+$green: #065535;
+$red: #ff4040;
+$orange: #ff7f50;
+$yellow: #fef65b;
+$blue: #0099cc;
+$white: #f5f5f5;
+
+
+/* Global styling rules */
+
+.section {
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px 0 rgba(#e6e6fa, 0.4);
+    padding: 30px;
+    border-radius: 5px;
+}
+
+.title {
+    font-size: $large;
+    color: $black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.mini-title {
+    font-size: $medium;
+    color: $black;
+    font-weight: bold;
+    text-align: left;
+}
+
+.icon-grey {
+    color: rgba($grey, 0.7);
+    &:hover, &:focus, &:active {
+        color: $white;
+    }
+}
+
+.icon-black {
+    color: rgba($black, 0.7);
+    &:hover, &:focus, &:active {
+        color: $white;
+    }
+}
+
+.icon-blue {
+    color: rgba($blue, 0.7);
+    &:hover, &:focus, &:active {
+        color: $white;
+    }
+}

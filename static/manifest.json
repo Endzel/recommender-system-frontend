@@ -1,0 +1,8 @@
+{
+  "name": "groupal-recommender-system",
+  "short_name": "Groupal Recommender System",
+  "start_url": "/app/index.html",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#4DBA87"
+}

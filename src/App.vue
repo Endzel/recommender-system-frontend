@@ -1,0 +1,222 @@
+<template>
+
+
+    <div id="app-login" v-if="this.$store.state.logged_in !== true">
+
+      <router-view/>
+
+    </div>
+
+
+    <div id="app" v-else-if="this.$store.state.logged_in === true" >
+
+        <navbar id="navbar"/>
+
+        <div class="view">
+
+            <b-col class="main">
+                <b-container class="main-container break-margin-left break-margin-right">
+                    <router-view class="main-container break-margin-left break-margin-right" />
+                </b-container>
+            </b-col>
+
+        </div
+        >
+    </div>
+</template>
+
+<script>
+    import Navbar from '@/components/utils/Navbar'
+
+    export default {
+        name: 'app',
+        components: { 'navbar': Navbar },
+        data () {
+            return {
+
+            }
+        },
+        methods : {
+        },
+        beforeCreate: function () {
+            document.title = "Sistema de recomendación turístico grupal"
+            if (!(this.$route.name === 'Login' && this.$route.query.logout) && this.$route.name !== 'Register') {
+                this.$store.dispatch('searchInfos')
+            }
+        },
+    }
+</script>
+
+<style lang="scss">
+    @import 'src/assets/css/global.scss';
+
+    html, body {
+        font: $main-font;
+        color: $grey;
+    }
+
+
+
+    @media (min-width: 1100px) {
+        .main-nav {
+            max-width: 1850px;
+        }
+    }
+
+    .main {
+        width: 100vw;
+        padding-right: 0;
+        padding-left: 0;
+    }
+
+    .row.row-break-margin-bottom {
+        margin-bottom: 0px !important;
+    }
+    .row.row-break-margin-top {
+        margin-top: 0px !important;
+    }
+
+    .wrapper {
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        cursor: pointer;
+    }
+
+    .button {
+        cursor: pointer;
+        border-radius: 5px;
+        color: $white;
+        line-height: 100px;
+        white-space: nowrap;
+        border: none;
+        height: 40px;
+        padding-top: 10px !important;
+        padding-bottom: 10px !important;
+        font: $main-font;
+        width: 100%;
+        background-color: $grey !important;
+        transition: box-shadow .3s ease, background .3s ease;
+        &-sm {
+            font-size: $small;
+            height: 30px;
+            padding-top: 8px !important;
+            padding-bottom: 8px !important;
+        }
+        &-nf {
+            width: auto;
+        }
+        &:hover, &-sm:hover, &-focused {
+            background-color: $black !important;
+            box-shadow: 0 5px 28px rgba($grey, 0.25), 0 5px 10px rgba($grey, 0.22);
+        }
+        &:focus, &-sm:focus {
+            background-color: $black !important;
+        }
+        &:active, &-sm:active {
+            box-shadow: none !important;
+        }
+    }
+
+    a.button {
+        box-shadow: none !important;
+        padding-top: 15px;
+    }
+
+    .router-link-active {
+        font: $main-font;
+        color: $grey;
+        line-height: 1.5;
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .router-link-active:hover {
+        color: $blue;
+    }
+
+    .view {
+        display: flex;
+        flex-wrap: wrap;
+        background-color: $white;
+    }
+
+    .main-container {
+        max-width: 100%;
+        padding: 0px;
+        min-height: 100vh;
+    }
+
+    .container {
+        .row {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    }
+
+    .side {
+        min-width: 180px;
+        padding: 0px;
+    }
+
+    .page-root {
+        text-align: center;
+        padding: 70px;
+        margin-left: 235px;
+        overflow-x: hidden;
+        @media (min-width: 320px) and (max-width: 767px) {
+            padding: 20px;
+            margin-left: 0px;
+        }
+    }
+
+    .break {
+        color: $white;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    // Breaks
+
+    .break-margin {
+        &-top {
+            margin-top: 0px !important;
+        }
+        &-bottom {
+            margin-bottom: 0px !important;
+        }
+        &-left {
+            margin-left: 0px !important
+        }
+        &-right {
+            margin-right: 0px !important
+        }
+        &-all {
+            margin: 0px !important;
+        }
+    }
+
+    .break-padding {
+        padding: 0px !important;
+        &-top {
+            padding-top: 0px !important;
+        }
+        &-bottom {
+            padding-bottom: 0px !important;
+        }
+        &-left {
+            padding-left: 0px !important
+        }
+        &-right {
+            padding-right: 0px !important
+        }
+        &-all {
+            padding: 0px !important;
+        }
+    }
+
+</style>

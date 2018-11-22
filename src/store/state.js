@@ -1,0 +1,15 @@
+export default {
+    id: null,
+    user: null,
+    section_focused: null,
+    api: {
+        domain: process.env.API_ROOT,
+        token: null,
+    },
+    logged_in: null,
+    expiry: {
+        cookie: 30, // 30 days
+        local_storage: 60 * 60 * 1000 * 24 * 30, // 30 days
+    },
+    cache_data: {},
+}
