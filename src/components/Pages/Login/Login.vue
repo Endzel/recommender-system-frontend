@@ -1,13 +1,20 @@
 <template>
     <div class="login d-flex align-items-center">
         <b-container>
-            <b-row><b-col class="title">Sistema de recomendación turístico grupal</b-col></b-row>
+            <b-row><b-col class="title">Bienvenido</b-col></b-row>
             <b-container id="login-form">
-                <b-form-group :feedback="feedbacks.form" :state="states.form" class="form-validation">
-                    <b-row><b-col><b-form-input placeholder="your@example.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"></b-form-input></b-col></b-row>
+                <b-form-group :feedback="feedbacks.form" class="form-validation">
+                    <b-row><b-col><b-form-input placeholder="alumno@ejemplo.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"></b-form-input></b-col></b-row>
                     <b-row><b-col><b-form-input placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"></b-form-input></b-col></b-row>
                 </b-form-group>
-                <b-row><b-col><btn size="lg" color="purple" @click="login()">Log in</btn></b-col></b-row>
+                <b-row>
+                    <b-col>
+                        <b-btn size="lg" color="purple" @click="login()">Acceder</b-btn>
+                    </b-col>
+                    <b-col>
+                        <b-btn size="lg" color="purple" @click="toRegister()">Registrarse</b-btn>
+                    </b-col>
+                </b-row>
             </b-container>
         </b-container>
     </div>
@@ -20,6 +27,9 @@
             return {
                 login_body: {},
                 validate: true,
+                feedbacks: {
+                  form: null,
+                },
             }
         },
         methods: {
@@ -28,6 +38,9 @@
                     this.$store.dispatch('login', response.data)
                 }, error => {
                 });
+            },
+            toRegister() {
+                this.$router.push({ name: 'Register' })
             },
         },
         beforeCreate: function(state) {

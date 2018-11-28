@@ -1,17 +1,17 @@
 <template>
-    <div id="register" class="d-flex align-items-center">
+    <div id="register" class="d-flex align-items-center register">
         <b-container>
             <b-row>
                 <b-col>
-                    <div id="title" class="hvr-grow-shadow">
-                        <span id="main">Sistema de recomendación turístico grupal</span>
+                    <div id="title" class="title hvr-grow-shadow">
+                        <span id="main">Acceda al sistema</span>
                     </div>
                 </b-col>
             </b-row>
             <b-container id="register-form">
                 <b-row>
                     <b-col>
-                        <b-form-input placeholder="your@example.com" v-model="register_body.email" @keydown.enter.native="register"></b-form-input>
+                        <b-form-input placeholder="alumno@ejemplo.com" v-model="register_body.email" @keydown.enter.native="register"></b-form-input>
                     </b-col>
                 </b-row>
                 <hr class="my-4">
@@ -38,7 +38,7 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <b-btn size="lg" variant="primary" class="button primary-button" @click="register()">Regístrate</b-btn>
+                        <b-btn size="lg" variant="primary" class="button primary-button" @click="register()">Completar registro</b-btn>
                     </b-col>
                     <b-col>
                         <span class="error">{{ this.feedback }}</span>
@@ -92,7 +92,7 @@
     @import 'src/assets/css/global.scss';
 
 
-    .login {
+    .register {
         width: 100%;
         min-height: 100vh;
         background-color: $white;
@@ -102,11 +102,13 @@
             margin-bottom: 40px;
             #main {
                 font-size: 50px;
-                color: $red;
             }
             #sub {
                 color: $grey;
             }
+        }
+        #register-form {
+            max-width: 400px;
         }
         .error {
             font-weight: bold;
