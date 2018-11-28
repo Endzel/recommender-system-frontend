@@ -3,7 +3,7 @@ export default {
     user: null,
     section_focused: null,
     api: {
-        domain: process.env.API_ROOT,
+        domain: process.env.API,
         token: null,
     },
     logged_in: null,

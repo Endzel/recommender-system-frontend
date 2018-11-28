@@ -6,7 +6,7 @@ module.exports = {
   ENV: "'dev'",
   API: '"localhost:8000/"',
   HOST: '0.0.0.0',
-  HOSTNAME: 'localhost:8081',
+  HOSTNAME: 'localhost:8080',
   PATH: "/",
   basePath: undefined,
   assetsPublicPath: '/',
