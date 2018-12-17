@@ -3,16 +3,16 @@
         <b-container>
             <b-row><b-col class="title">Bienvenido</b-col></b-row>
             <b-container id="login-form">
-                <b-form-group :feedback="feedbacks.form" class="form-validation">
-                    <b-row><b-col><b-form-input placeholder="alumno@ejemplo.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"></b-form-input></b-col></b-row>
-                    <b-row><b-col><b-form-input placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"></b-form-input></b-col></b-row>
+                <b-form-group class="form-validation">
+                    <b-row><b-col><input-field placeholder="alumno@ejemplo.com" v-model="login_body.username" @keydown.enter.native="login" type="email"/></b-col></b-row>
+                    <b-row><b-col><input-field placeholder="••••••••" v-model="login_body.password" type="password" @keydown.enter.native="login"/></b-col></b-row>
                 </b-form-group>
                 <b-row>
                     <b-col>
-                        <b-btn size="lg" color="purple" @click="login()">Acceder</b-btn>
+                        <btn size="big" color="green" @click="login()">Acceder</btn>
                     </b-col>
                     <b-col>
-                        <b-btn size="lg" color="purple" @click="toRegister()">Registrarse</b-btn>
+                        <btn size="big" color="green" @click="toRegister()">Registrarse</btn>
                     </b-col>
                 </b-row>
             </b-container>
@@ -26,10 +26,7 @@
         data () {
             return {
                 login_body: {},
-                validate: true,
-                feedbacks: {
-                  form: null,
-                },
+                feedback: '',
             }
         },
         methods: {
@@ -66,7 +63,7 @@
         text-align: center;
         .title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         #login-form {
             max-width: 400px;
@@ -74,9 +71,9 @@
     }
 
     .hvr-grow-shadow {
-        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
+        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 1);
+        -webkit-transform: scale(1.35);
+        transform: scale(1.35);
     }
 
 </style>

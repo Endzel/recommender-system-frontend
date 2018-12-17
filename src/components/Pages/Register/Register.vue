@@ -11,37 +11,39 @@
             <b-container id="register-form">
                 <b-row>
                     <b-col>
-                        <b-form-input placeholder="alumno@ejemplo.com" v-model="register_body.email" @keydown.enter.native="register"></b-form-input>
+                        <input-field placeholder="alumno@ejemplo.com" v-model="register_body.email" @keydown.enter.native="register"></input-field>
                     </b-col>
                 </b-row>
-                <hr class="my-4">
+                <hr>
                 <b-row>
                     <b-col>
-                        <b-form-input placeholder="Nombre" v-model="register_body.first_name" @keydown.enter.native="register"></b-form-input>
-                    </b-col>
-                </b-row>
-                <b-row>
-                    <b-col>
-                        <b-form-input placeholder="Apellido" v-model="register_body.last_name" @keydown.enter.native="register"></b-form-input>
-                    </b-col>
-                </b-row>
-                <hr class="my-4">
-                <b-row>
-                    <b-col>
-                        <b-form-input placeholder="••••••••" v-model="register_body.password" type="password" @keydown.enter.native="register"></b-form-input>
+                        <input-field placeholder="Nombre" v-model="register_body.first_name" @keydown.enter.native="register"></input-field>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
-                        <b-form-input placeholder="••••••••" v-model="register_body.confirm_password" type="password" @keydown.enter.native="register"></b-form-input>
+                        <input-field placeholder="Apellido" v-model="register_body.last_name" @keydown.enter.native="register"></input-field>
+                    </b-col>
+                </b-row>
+                <hr>
+                <b-row>
+                    <b-col>
+                        <input-field placeholder="••••••••" v-model="register_body.password" type="password" @keydown.enter.native="register"></input-field>
                     </b-col>
                 </b-row>
                 <b-row>
                     <b-col>
-                        <b-btn size="lg" variant="primary" class="button primary-button" @click="register()">Completar registro</b-btn>
+                        <input-field placeholder="••••••••" v-model="register_body.confirm_password" type="password" @keydown.enter.native="register"></input-field>
                     </b-col>
+                </b-row>
+                <b-row>
                     <b-col>
                         <span class="error">{{ this.feedback }}</span>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <btn size="big" color="green" @click="register()">Completar registro</btn>
                     </b-col>
                 </b-row>
             </b-container>

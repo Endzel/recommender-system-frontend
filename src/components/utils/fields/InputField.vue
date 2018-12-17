@@ -79,13 +79,12 @@
 
     .div-input {
         width: 100%;
-        min-height: 70px;
         margin-bottom: 10px;
         .field-header {
             margin-bottom: 10px;
             .label {
                 text-align: left;
-                font-size: $slarge;
+                font-size: $medium;
                 color: $black;
                 font-weight: bold;
             }
@@ -96,10 +95,10 @@
             padding-right: 10px;
             width: 100%;
             height: 35px;
-            border-radius: 3.5px;
+            border-radius: 6px;
             border: solid 1px $grey;
-            font-size: $medium;
-            background-color: $white;
+            font-size: $small;
+            background-color: rgba($olive, 0.25);
             outline: none;
             transition: box-shadow .3s ease, border .3s ease, color .3s ease;
             &:hover {

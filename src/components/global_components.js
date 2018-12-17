@@ -9,6 +9,9 @@ Vue.component('date-field', DateField);
 import InputField from './utils/fields/InputField'
 Vue.component('input-field', InputField);
 
+import Button from './utils/misc/Button'
+Vue.component('btn', Button);
+
 import SelectField from './utils/fields/SelectField'
 Vue.component('select-field', SelectField);
 
