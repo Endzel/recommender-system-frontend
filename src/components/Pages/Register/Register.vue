@@ -118,10 +118,4 @@
         }
     }
 
-    .hvr-grow-shadow {
-        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
-    }
-
 </style>
