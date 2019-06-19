@@ -38,7 +38,7 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <span class="error">{{ this.feedback }}</span>
+                        <span class="feedback-error">{{ this.feedback }}</span>
                     </b-col>
                 </b-row>
                 <b-row>
@@ -64,11 +64,7 @@
         methods: {
             register() {
                 if (this.register_body.confirm_password !== undefined && this.register_body.confirm_password === this.register_body.password) {
-                    this.apiPost('register/', this.register_body).then(response => {
-                        this.$store.dispatch('login', response.data)
-                    }, error => {
-                    });
-                    this.apiPost(this.$store.state.api.domain + '/register', this.register_body, {headers: headers}).then(response => {
+                    this.apiPost(this.$store.state.api.domain + 'users/register', this.register_body, {headers: headers}).then(response => {
                         this.$store.dispatch('join', {email: this.register_body.email, password: this.register_body.password })
                     }, response => {
                         this.feedback = response.body.error;

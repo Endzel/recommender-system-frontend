@@ -7,6 +7,7 @@ export default {
                 baseURL: this.$store.state.api.domain,
                 headers: {
                      'Authorization': 'Token ' + this.$store.state.api.token,
+                     'X-CSRFToken': this.$store.state.api.csrftoken || "",
                      'Content-Type': 'application/json',
                      'Accept': 'application/json'
                 }

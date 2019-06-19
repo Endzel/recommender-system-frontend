@@ -7,6 +7,11 @@
                     <b-row><b-col><input-field placeholder="alumno@ejemplo.com" v-model="login_body.username" @keydown.enter.native="login" type="email"/></b-col></b-row>
                     <b-row><b-col><input-field placeholder="••••••••" v-model="login_body.password" type="password" @keydown.enter.native="login"/></b-col></b-row>
                 </b-form-group>
+                <b-row v-show="this.feedback !== ''">
+                    <b-col>
+                        <p class="feedback-error">{{ this.feedback }}</p>
+                    </b-col>
+                </b-row>
                 <b-row>
                     <b-col>
                         <btn size="big" color="green" @click="login()">Acceder</btn>
@@ -31,9 +36,14 @@
         },
         methods: {
             login() {
-                this.apiPost('login/', this.login_body).then(response => {
+                this.apiPost('users/login', this.login_body).then(response => {
                     this.$store.dispatch('login', response.data)
-                }, error => {
+                }, response => {
+                    if (response.body !== undefined && response.body !== null) {
+                        this.feedback = response.body.error;
+                    } else {
+                        this.feedback = 'Tus credenciales no son correctas!'
+                    }
                 });
             },
             toRegister() {

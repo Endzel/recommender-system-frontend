@@ -8,7 +8,7 @@
     export default {
         name: 'home',
         beforeCreate: function() {
-            document.title = "Sistema de recoomendación turístico grupal"
+            document.title = "Sistema de recomendación turístico grupal"
             this.$router.push({name: 'Search'})
         },
     }
