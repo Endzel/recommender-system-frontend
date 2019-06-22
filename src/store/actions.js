@@ -17,7 +17,7 @@ export default {
 
         // Get user logged in informations
         var headers = {'Content-Type': 'application/json', 'Accept': 'application/json', "Authorization": "Token " + token,};
-        await Vue.http.get(api_domain + '/user', {headers: headers}).then(response => {
+        await Vue.http.get(api_domain + 'users', {headers: headers}).then(response => {
             context.commit('saveUserInfos', response.body)
             context.commit('setLoggedIn', true)
             router.push({name: 'Home'})
@@ -44,7 +44,7 @@ export default {
             password: data.password,
         }
         var headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
-        Vue.http.post(api_domain + '/login', body, {headers: headers}).then(response => {
+        Vue.http.post(api_domain + 'users/login', body, {headers: headers}).then(response => {
             context.dispatch('login', response.body)
         }, response => {
         });
@@ -55,8 +55,8 @@ export default {
             context.commit('saveUserToken', { token: VueCookie.get('token'), })
             var token = context.getters.apiInfos.token
             var api_domain = context.getters.apiInfos.domain
-            var headers = {'Content-Type': 'application/json', 'Accept': 'application/json', "Authorization": "Token " + token, 'X-CSRFToken': csrftoken,};
-            await Vue.http.get(api_domain + '/user', {headers: headers}).then(response => {
+            var headers = {'Content-Type': 'application/json', 'Accept': 'application/json', "Authorization": "Token " + token,};
+            await Vue.http.get(api_domain + 'users', {headers: headers}).then(response => {
                 context.commit('saveUserInfos', response.body)
             }, response => {
                 context.dispatch('logout')

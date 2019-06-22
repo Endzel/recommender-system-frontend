@@ -5,6 +5,7 @@ export default {
     api: {
         domain: process.env.API,
         token: null,
+        csrftoken: null,
     },
     logged_in: null,
     expiry: {
