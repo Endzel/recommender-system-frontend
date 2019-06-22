@@ -64,8 +64,11 @@
         methods: {
             register() {
                 if (this.register_body.confirm_password !== undefined && this.register_body.confirm_password === this.register_body.password) {
-                    this.apiPost(this.$store.state.api.domain + 'users/register', this.register_body, {headers: headers}).then(response => {
+                    this.apiPost(this.$store.state.api.domain + 'users/register', this.register_body).then(response => {
                         this.$store.dispatch('join', {email: this.register_body.email, password: this.register_body.password })
+                        this.apiPost('users/login', {username: this.register_body.email, password: this.register_body.password }).then(response => {
+                            this.$store.dispatch('login', response.data)
+                        }, response => {})
                     }, response => {
                         this.feedback = response.body.error;
                     });

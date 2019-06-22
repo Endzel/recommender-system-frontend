@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            requestHandler: axios.create({
+            requestHandler: this.$store.state || axios.create({
                 baseURL: this.$store.state.api.domain,
                 headers: {
                      'Authorization': 'Token ' + this.$store.state.api.token,
@@ -15,7 +15,7 @@ export default {
         }
     },
     methods: {
-        async apiGet(url, fields) {
+        async apiGet(url) {
             return await this.requestHandler.get(url)
         },
         async apiDel(url) {

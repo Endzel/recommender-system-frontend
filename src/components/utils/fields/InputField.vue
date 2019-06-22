@@ -54,7 +54,7 @@
         },
         data () {
             return {
-                value: null,
+                value: this.initialValue,
             }
         },
         watch: {
@@ -65,6 +65,7 @@
         methods: {
             updateValue(value) {
                 this.value = value
+                this.$emit('input', this.value)
             },
         },
         created: function() {

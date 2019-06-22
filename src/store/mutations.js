@@ -11,7 +11,6 @@ export default {
         state.api.token = data.token
     },
     saveUserInfos(state, logInfos) {
-      state.user = logInfos.user;
       state.email = logInfos.email;
       state.cache_data = Vue.ls.get('cachedata');
       state.section_focused = Vue.ls.get('section_focused')

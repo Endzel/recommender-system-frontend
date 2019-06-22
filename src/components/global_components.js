@@ -19,4 +19,4 @@ import TextAreaField from './utils/fields/TextAreaField'
 Vue.component('text-area-field', TextAreaField);
 
 import Picture from './utils/Picture'
-Vue.component('picture', Picture);
+Vue.component('pic', Picture);

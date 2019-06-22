@@ -6,7 +6,7 @@
 
 <script>
     export default {
-        name: 'Home',
+        name: 'Preferences',
         beforeCreate: function() {
             document.title = "Sistema de recomendación turístico grupal"
         },
