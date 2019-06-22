@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            requestHandler: this.$store.state || axios.create({
+            requestHandler: this.$store || axios.create({
                 baseURL: this.$store.state.api.domain,
                 headers: {
                      'Authorization': 'Token ' + this.$store.state.api.token,

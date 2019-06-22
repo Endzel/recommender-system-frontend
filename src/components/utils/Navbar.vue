@@ -42,24 +42,8 @@
         margin: auto;
     }
 
-    .username {
-        font-size: $medium;
-    }
-
-    .dropdown {
-        .dropdown-menu {
-            a {
-                text-decoration: none;
-                outline: none;
-            }
-            #profile-picture {
-                border: 1px solid $white;
-            }
-        }
-    }
-
     .navbar-section {
-        font-size: 14px;
+        font-size: 16px;
     }
 
 </style>

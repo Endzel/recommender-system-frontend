@@ -1,9 +1,9 @@
 <template>
     <div class="div-date">
-        <div class="d-flex field-header">
-            <div v-if="label !== null" class="label"><span>{{ label }}</span></div>
-        </div>
-        <datepicker value="value" v-model="value" format="yyyy-MM-dd" @input="updateValue"></datepicker>
+        <b-row>
+            <b-col><datepicker value="value" v-model="value" format="yyyy-MM-dd" @input="updateValue"></datepicker></b-col>
+            <b-col><i class="fa fa-calendar" aria-hidden="true"/></b-col>
+        </b-row>
     </div>
 </template>
 
@@ -13,13 +13,7 @@
     export default {
         name: 'DateField',
         components: { 'datepicker': Datepicker, },
-        props: {
-            label: {
-                type: String,
-                required: false,
-                default: null,
-            },
-        },
+        props: {},
         data () {
             return {
                 value: null,
@@ -40,26 +34,11 @@
     .div-date {
         width: 100%;
         margin-bottom: 10px;
-        min-height: 70px;
-        .field-header {
-            margin-bottom: 10px;
-            .label {
-                text-align: left;
-                font-size: $large;
-                color: $black;
-                font-weight: bold;
-            }
-        }
-        .input {
+        min-height: 40px;
+        .vdp-datepicker {
             width: 100%;
-            padding-left: 10px;
-            padding-right: 10px;
-            width: 100%;
-            border-radius: 5px;
-            border: solid 1px $grey;
-            font-size: $medium;
+            font-size: $small;
             background-color: $white;
-            outline: none;
             transition: box-shadow .3s ease, border .3s ease, color .3s ease;
             &:hover {
                 color: $black;
@@ -69,6 +48,11 @@
                 box-shadow: 0 0 3px 2px $grey;
             }
         }
+    }
+
+    .vdp-datepicker input {
+        border-radius: 5px!important;
+        border: 1px solid!important;
     }
 
 </style>

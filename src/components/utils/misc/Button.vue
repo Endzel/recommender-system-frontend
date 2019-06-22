@@ -76,4 +76,28 @@
         }
     }
 
+    .button-orange {
+        background-color: $orange !important;
+        &:hover, &:focus, &:active {
+            background-color: $white !important;
+            color: $orange !important;
+        }
+    }
+
+    .button-red {
+        background-color: $red !important;
+        &:hover, &:focus, &:active {
+            background-color: $white !important;
+            color: $red !important;
+        }
+    }
+
+    .button-blue {
+        background-color: $blue !important;
+        &:hover, &:focus, &:active {
+            background-color: $white !important;
+            color: $blue !important;
+        }
+    }
+
 </style>

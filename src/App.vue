@@ -15,6 +15,7 @@
         <div class="view">
 
             <b-col class="main">
+                <pic class="image-header" :fluid="true" :src="require('@/assets/images/header.jpg')"/>
                 <b-container class="main-container break-margin-left break-margin-right">
                     <router-view class="main-container break-margin-left break-margin-right" />
                 </b-container>
@@ -52,7 +53,7 @@
 
     html, body {
         font: $main-font;
-        color: $grey;
+        color: $black;
     }
 
 
@@ -61,6 +62,11 @@
         .main-nav {
             max-width: 1850px;
         }
+    }
+
+    .image-header {
+        max-height: 300px;
+        width: 100%;
     }
 
     .main {
@@ -81,6 +87,11 @@
         align-items: stretch;
         flex-direction: column;
         width: 100%;
+    }
+
+    .field-group {
+        min-width: 40%;
+        align-items: center;
     }
 
     .btn {
@@ -143,6 +154,11 @@
         display: flex;
         flex-wrap: wrap;
         background-color: $white;
+    }
+
+    .feedback {
+        font-weight: bold;
+        color: $red;
     }
 
     .main-container {

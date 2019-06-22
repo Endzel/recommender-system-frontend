@@ -12,6 +12,9 @@ Vue.component('input-field', InputField);
 import Button from './utils/misc/Button'
 Vue.component('btn', Button);
 
+import Card from './utils/misc/Card'
+Vue.component('card', Card);
+
 import SelectField from './utils/fields/SelectField'
 Vue.component('select-field', SelectField);
 
