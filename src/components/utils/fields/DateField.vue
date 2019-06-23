@@ -22,6 +22,13 @@
         methods: {
             updateValue(value) {
                 this.value = value
+                if (value !== null && value !== undefined){
+                    if (typeof value !== 'string') {
+                        this.$emit('input', value.toISOString().split('T')[0])
+                    } else {
+                        this.$emit('input', value.split('T')[0])
+                    }
+                }
             },
         },
     }

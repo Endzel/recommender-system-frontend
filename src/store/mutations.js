@@ -6,18 +6,18 @@ import Vue from 'vue'
 
 export default {
     saveUserToken(state, data) {
-        var expiry = 60 * 60 * 1000 * 24 * 60; // 60 days
+        var expiry = 60 * 60 * 1000 * 24 * 60; // 60 day
         VueCookie.set('token', data.token, expiry)
         state.api.token = data.token
+        state.api.csrftoken = VueCookie.get('csrftoken')
     },
     saveUserInfos(state, logInfos) {
-      state.email = logInfos.email;
+      state.user = logInfos.id;
       state.cache_data = Vue.ls.get('cachedata');
       state.section_focused = Vue.ls.get('section_focused')
     },
     removeUserInfos(state) {
       state.user = null
-      state.user = null;
       state.api.token = null
       VueCookie.delete('csrftoken');
       VueCookie.delete('token');

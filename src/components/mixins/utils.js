@@ -21,26 +21,5 @@ export default {
             }
             return str;
         },
-        getCityChoices() {
-            this.apiGet('cities/choices').then(response => {
-                return response.data;
-            }, error => {
-                return []
-            });
-        },
-        getUserChoices() {
-            this.apiGet('users/choices').then(response => {
-                return response.data;
-            }, error => {
-                return []
-            });
-        },
-        getContextChoices() {
-            this.apiGet('context_segments/choices').then(response => {
-                return response.data;
-            }, error => {
-                return []
-            });
-        },
     }
 }

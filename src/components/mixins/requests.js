@@ -1,9 +1,12 @@
 import axios from 'axios';
 
+axios.defaults.xsrfCookieName = 'csrftoken'
+axios.defaults.xsrfHeaderName = "X-CSRFTOKEN"
+
 export default {
     data() {
         return {
-            requestHandler: this.$store || axios.create({
+            requestHandler: axios.create({
                 baseURL: this.$store.state.api.domain,
                 headers: {
                      'Authorization': 'Token ' + this.$store.state.api.token,
