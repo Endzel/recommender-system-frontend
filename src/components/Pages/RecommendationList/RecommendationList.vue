@@ -1,25 +1,45 @@
 <template>
     <div class="d-flex align-items-center">
         <b-container>
-            <div class="header-infos">
-
-            </div>
+            <b-row cols="4" class="header-infos">
+                <b-col><card color="yellow" title="Valoración:" @update="setValoration"></card></b-col>
+                <b-col>
+                    <span class="subtitle">Recomendación para {{this.infos.city.name}}</span>
+                    <span>Compañeros de viaje: {{ this.company }} </span>
+                    <tag class="save-btn" @click="saveRecommendation()" :value="'Guardar recomendación'" color="green"/>
+                </b-col>
+                <b-col>
+                    <b-row>
+                        <b-col>
+                            <span>Desde: {{this.infos.start_date}}</span>
+                            <tag class="place-tag" :value="this.infos.city.name" color="blue"/>
+                        </b-col>
+                    </b-row>
+                    <b-row>
+                        <b-col>
+                            <span>Hasta: {{this.infos.end_date}}</span>
+                            <tag class="place-tag" :value="this.infos.city.country" color="grey"/>
+                        </b-col>
+                    </b-row>
+                </b-col>
+            </b-row>
             <b-row v-for="(item, index) in items" :key="item.id">
-                <item-card :id="item.id" :data="item"/>
+                <item-card :data="item"/>
             </b-row>
         </b-container>
     </div>
 </template>
 
 <script>
-    import ItemCard from '@/components/utils/misc/ItemCard'
-
     export default {
         name: 'RecommendationList',
-        component: { 'item-card': ItemCard },
+        component: {},
         data () {
             return {
-                items: []
+                infos: {},
+                items: [],
+                valoration: null,
+                company: ""
             }
         },
         methods: {
@@ -27,11 +47,28 @@
                 this.apiGet('recommendations/' + this.$route.params.id).then(response => {
                     this.items = response.data.items
                     this.infos = response.data
+                    let company = ""
+                    this.infos.group.users.forEach(function(e) {
+                        company = company + e.first_name + " " + e.last_name + ", "
+                    })
+                    this.company = company.substring(0, company.length - 2);
                 }, response => {});
             },
-            created: function() {
-                this.getRecommendation();
+            saveRecommendation() {
+                let params = {}
+                params["recommendation"] = this.$route.params.id
+                params["score"] = this.valoration
+                this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación guardada correctamente!'})
+                // this.apiPost('valorations', params).then(response => {
+                //
+                // }, response => {});
             },
+            setValoration(value) {
+                this.valoration = value
+            },
+        },
+        created: function() {
+            this.getRecommendation();
         },
     }
 </script>
@@ -40,14 +77,35 @@
 <style lang="scss" scoped>
     @import 'src/assets/css/global.scss';
 
-    .reommendation-list {
-        width: 100%;
-        min-height: 100vh;
-        background-color: $white;
+    @media (min-width: 1600px){
+        .container {
+            max-width: 1200px;
+        }
+    }
+
+    .header-infos {
         text-align: center;
-        .header-infos {
-            text-align: center;
+        margin-bottom: 10px;
+        align-items: center;
+        justify-content: center;
+        div {
+            .card {
+                min-width: 0;
+            }
+        }
+        .subtitle {
+            font-size: 24px;
             margin-bottom: 10px;
+            font-weight: 500;
+        }
+        .save-btn {
+            margin-top: 20px;
+            margin-left: 25%;
+            cursor: pointer;
+        }
+        .place-tag {
+            margin: 10px;
+            margin-left: 25%;
         }
     }
 

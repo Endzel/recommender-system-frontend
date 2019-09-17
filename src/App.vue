@@ -12,6 +12,8 @@
 
         <navbar id="navbar"/>
 
+        <alert v-if="this.$store.state.alert.show" :message="this.$store.state.alert.message" :type="this.$store.state.alert.type" />
+
         <div class="view">
 
             <b-col class="main">

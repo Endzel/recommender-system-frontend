@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>Valorations</h1>
+        
     </div>
 </template>
 

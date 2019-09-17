@@ -78,7 +78,7 @@
                     start_date: '',
                     end_date: '',
                     context: {
-                        context_segment: 0,
+                        context: 0,
                         weight: 0,
                     },
                     users: [],
@@ -117,26 +117,26 @@
                         this.apiPost('groups', {'users' : this.search.users}).then(response => {
                             this.search.group = response.data.id
                             this.search.context.user = this.$store.state.user
-                            this.apiPost('user_contexts', this.search.context).then(response => {
-                                this.search.context_segments = [this.search.context.context_segment]
-                                delete this.search.context
+                            this.apiPost('recommendation_contexts', this.search.context).then(response => {
+                                this.search.context = response.data.id
                                 delete this.search.users
                                 this.apiPost('recommendations', this.search).then(response => {
+                                    this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación generada correctamente!'})
                                     this.$router.push({ name: 'RecommendationList', params: { id: response.data.id }})
                                 }, response => {
-                                    this.feedback = "La recomendación no pudo ser creada correctamente";
+                                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La recomendación no pudo ser creada correctamente'})
                                 });
                             }, response => {
-                                this.feedback = "El contexto no pudo ser creado correctamente";
+                                this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El contexto no pudo ser creado correctamente'})
                             });
                         }, response => {
-                            this.feedback = "El grupo no pudo ser creado correctamente";
+                            this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El grupo no pudo ser creado correctamente'})
                         });
                     } else {
-                        this.feedback = "La fecha de vuelta debe ser posterior o igual a la de ida"
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La fecha de vuelta debe ser posterior o igual a la de ida'})
                     }
                 } else {
-                    this.feedback = "Por favor, rellena todos los datos"
+                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'Por favor, rellene todos los datos'})
                 }
             },
             getCityChoices() {

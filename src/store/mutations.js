@@ -39,4 +39,9 @@ export default {
       state.cache_data[data.index] = data.data;
       Vue.ls.set('cachedata', this.state.cache_data, state.expiry.local_storage);
     },
+    setAlertInfos(state, alert) {
+        state.alert.show = alert.show
+        state.alert.type = alert.type
+        state.alert.message = alert.message
+    },
 }

@@ -13,5 +13,10 @@ export default {
         cookie: 30, // 30 days
         local_storage: 60 * 60 * 1000 * 24 * 30, // 30 days
     },
+    alert: {
+        show: false,
+        message: '',
+        type: 'info',
+    },
     cache_data: {},
 }

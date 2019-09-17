@@ -9,11 +9,20 @@ Vue.component('date-field', DateField);
 import InputField from './utils/fields/InputField'
 Vue.component('input-field', InputField);
 
+import AlertElement from './utils/misc/Alert'
+Vue.component('alert', AlertElement);
+
 import Button from './utils/misc/Button'
 Vue.component('btn', Button);
 
 import Card from './utils/misc/Card'
 Vue.component('card', Card);
+
+import Tag from './utils/misc/Tag'
+Vue.component('tag', Tag);
+
+import ItemCard from './utils/misc/ItemCard'
+Vue.component('item-card', ItemCard);
 
 import SelectField from './utils/fields/SelectField'
 Vue.component('select-field', SelectField);
@@ -21,5 +30,5 @@ Vue.component('select-field', SelectField);
 import TextAreaField from './utils/fields/TextAreaField'
 Vue.component('text-area-field', TextAreaField);
 
-import Picture from './utils/Picture'
+import Picture from './utils/misc/Picture'
 Vue.component('pic', Picture);

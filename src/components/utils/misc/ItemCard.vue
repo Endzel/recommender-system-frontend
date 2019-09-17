@@ -1,12 +1,26 @@
 <template>
-    <b-container :class="'card ' + ' card-' + color">
-        <b-row>
-            <b-col>
-                <span class="title">{{ title }}</span>
-            </b-col>
-            <b-col class="star-rating-col">
-                <star-rating v-model="rating" :increment="1" :max-rating="10" inactive-color="#fff" active-color="#ff0" :star-size="20" :show-rating="true" @rating-selected="setValue(rating)"></star-rating>
-            </b-col>
+    <b-container>
+        <b-row class="card">
+            <pic id="background-image" v-if="data.image !== undefined && data.image !== null" fluid :type="'background_image'" :src="data.image"/>
+            <pic v-else id="background-image" :type="'background_image'" fluid :src="require('@/assets/images/default-item.jpg')"/>
+            <div class="foreground">
+                <b-row cols="6">
+                    <b-col>
+                        <span class="title">{{ data.name }}</span>
+                    </b-col>
+                    <b-col>
+                        <tag class="float-right right-info" :value="data.price + ' €'" color="yellow"/>
+                    </b-col>
+                </b-row>
+                <b-row cols="6">
+                    <!-- <b-col>
+                        <span class="subtitle">{{ data.date }}</span>
+                    </b-col> -->
+                    <b-col>
+                        <a class="float-right link" :href="data.weblink">{{data.weblink}}</a>
+                    </b-col>
+                </b-row>
+            </div>
         </b-row>
     </b-container>
 </template>
@@ -15,10 +29,6 @@
     export default {
         name: 'ItemCard',
         props: {
-            id: {
-                type: Number,
-                required: true,
-            },
             data: {
                 type: Object,
                 required: true,
@@ -26,28 +36,13 @@
         },
         data () {
             return {
-                values_list: {
-                    1 : 0.1,
-                    2 : 0.2,
-                    3 : 0.3,
-                    4 : 0.4,
-                    5 : 0.5,
-                    6 : 0.6,
-                    7 : 0.7,
-                    8 : 0.8,
-                    9 : 0.9,
-                    10 : 1
-                },
-                rating: 0,
+
             }
         },
         methods: {
             clicked() {
                 this.$emit('click')
             },
-            setValue(index) {
-                this.$emit('update', this.values_list[index])
-            }
         },
     }
 </script>
@@ -58,58 +53,30 @@
 
     .card {
         border-radius: 5px;
-        min-height: 100px;
-        width: auto;
+        height: 150px;
+        width: 100%;
         min-width: 500px;
-        justify-content: center;
-        align-items: center;
-        font: $main-font;
-        vertical-align: middle;
         transition: background .3s ease, color .3s ease;
-        @media (max-width: 767px) {
-            font-size: $small;
+        #background-image{
+            max-width:100%;
+            max-height:100%;
+            object-fit: cover;
+            opacity: 0.35;
         }
-        .star-rating-col {
-            margin:auto;
-        }
-    }
-
-    .card-grey {
-        background-color: $grey !important;
-        &:hover, &:focus, &:active {
-            background-color: rgba($grey, 0.5) !important;
-        }
-    }
-
-    .card-green {
-        background-color: $green !important;
-        &:hover, &:focus, &:active {
-            background-color: $white !important;
-            color: $green !important;
-        }
-    }
-
-    .card-yellow {
-        background-color: $yellow !important;
-        &:hover, &:focus, &:active {
-            background-color: $white !important;
-            color: $yellow !important;
-        }
-    }
-
-    .card-red {
-        background-color: $red !important;
-        &:hover, &:focus, &:active {
-            background-color: $white !important;
-            color: $red !important;
-        }
-    }
-
-    .card-blue {
-        background-color: $blue !important;
-        &:hover, &:focus, &:active {
-            background-color: $white !important;
-            color: $blue !important;
+        .foreground {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            .title {
+                margin: 20px;
+            }
+            .right-info {
+                width: 100%;
+                margin: 20px
+            }
+            .link {
+                margin: 20px;
+            }
         }
     }
 

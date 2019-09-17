@@ -27,12 +27,7 @@
                 type: String,
                 required: false,
             },
-        },
-        data () {
-            return {
-                image_src: null,
-            }
-        },
+        }
     }
 </script>
 

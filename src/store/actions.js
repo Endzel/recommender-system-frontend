@@ -51,6 +51,9 @@ export default {
     focusSection(context, section) {
         context.commit('setFocusedSection', section)
     },
+    setAlert(context, alert) {
+        context.commit('setAlertInfos', alert)
+    },
     cacheData(context, data) {
         context.commit('cacheData', data)
     },
