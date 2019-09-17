@@ -1,6 +1,7 @@
 export default {
     id: null,
     user: null,
+    is_staff: false,
     section_focused: null,
     api: {
         domain: process.env.API,

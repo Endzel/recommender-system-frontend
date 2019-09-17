@@ -13,12 +13,14 @@ export default {
     },
     saveUserInfos(state, logInfos) {
       state.user = logInfos.id;
+      state.is_staff = logInfos.is_staff;
       state.cache_data = Vue.ls.get('cachedata');
       state.section_focused = Vue.ls.get('section_focused')
     },
     removeUserInfos(state) {
       state.user = null
       state.api.token = null
+      state.is_staff = null
       VueCookie.delete('csrftoken');
       VueCookie.delete('token');
       state.section_focused = null

@@ -4,8 +4,12 @@
             <b-row><b-col class="title">Bienvenido</b-col></b-row>
             <b-container id="login-form">
                 <b-form-group class="form-validation">
-                    <b-row><b-col><input-field placeholder="alumno@ejemplo.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"/></b-col></b-row>
-                    <b-row><b-col><input-field placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"/></b-col></b-row>
+                    <b-row><b-col>
+                        <input-field placeholder="alumno@ejemplo.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"/>
+                     </b-col></b-row>
+                    <b-row><b-col>
+                        <input-field placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"/>
+                    </b-col></b-row>
                 </b-form-group>
                 <b-row v-show="this.feedback !== ''">
                     <b-col>
