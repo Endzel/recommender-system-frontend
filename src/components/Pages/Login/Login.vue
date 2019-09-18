@@ -24,6 +24,9 @@
                         <btn size="big" color="green" @click="toRegister()">Registrarse</btn>
                     </b-col>
                 </b-row>
+                <b-row class="align-items-center justify-content-center">
+                    <btn size="medium" color="blue" @click="toForgotPassword()">Olvidé mi contraseña...</btn>
+                </b-row>
             </b-container>
         </b-container>
     </div>
@@ -52,6 +55,9 @@
             },
             toRegister() {
                 this.$router.push({ name: 'Register' })
+            },
+            toRegister() {
+                this.$router.push({ name: 'ForgotPassword' })
             },
         },
         beforeCreate: function(state) {
