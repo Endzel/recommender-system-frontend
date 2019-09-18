@@ -56,7 +56,7 @@
             toRegister() {
                 this.$router.push({ name: 'Register' })
             },
-            toRegister() {
+            toForgotPassword() {
                 this.$router.push({ name: 'ForgotPassword' })
             },
         },
