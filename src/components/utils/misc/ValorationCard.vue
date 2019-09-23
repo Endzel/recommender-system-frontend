@@ -15,7 +15,7 @@
     import StarRating from 'vue-star-rating'
 
     export default {
-        name: 'Card',
+        name: 'ValorationCard',
         components: { 'star-rating' : StarRating },
         props: {
             color: {
@@ -27,6 +27,10 @@
                 type: String,
                 required: false,
                 default: ''
+            },
+            initialValue: {
+                required: false,
+                default: 0
             },
         },
         data () {
@@ -53,6 +57,9 @@
             setValue(index) {
                 this.$emit('update', this.values_list[index])
             }
+        },
+        created: function() {
+            this.rating = this.initialValue * 10
         },
     }
 </script>

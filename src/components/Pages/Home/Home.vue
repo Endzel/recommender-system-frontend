@@ -26,7 +26,7 @@
             <b-col><select-field v-model="context" :options="this.contexts" @input="updateContext"/></b-col>
         </b-row>
         <b-row v-if="context !== 0">
-            <b-col><card color="grey" :title="context_text" @update="updateContextValue"></card></b-col>
+            <b-col><valoration-card color="grey" :title="context_text" @update="updateContextValue"></valoration-card></b-col>
         </b-row>
         <b-row>
             <b-col><btn class="btn-recommender" color="orange" size="biggest" @click="requestRecommendation()">Solicitar recomendaciones</btn></b-col>
@@ -121,22 +121,22 @@
                                 this.search.context = response.data.id
                                 delete this.search.users
                                 this.apiPost('recommendations', this.search).then(response => {
-                                    this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación generada correctamente!'})
+                                    this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación generada correctamente 😊'})
                                     this.$router.push({ name: 'RecommendationList', params: { id: response.data.id }})
                                 }, response => {
-                                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La recomendación no pudo ser creada correctamente'})
+                                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La recomendación no pudo ser creada correctamente 😥'})
                                 });
                             }, response => {
-                                this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El contexto no pudo ser creado correctamente'})
+                                this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El contexto no pudo ser creado correctamente 😥'})
                             });
                         }, response => {
-                            this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El grupo no pudo ser creado correctamente'})
+                            this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'El grupo no pudo ser creado correctamente 😥'})
                         });
                     } else {
-                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La fecha de vuelta debe ser posterior o igual a la de ida'})
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'La fecha de vuelta debe ser posterior o igual a la de ida 😥'})
                     }
                 } else {
-                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'Por favor, rellene todos los datos'})
+                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'Por favor, rellene todos los datos 😥'})
                 }
             },
             getCityChoices() {

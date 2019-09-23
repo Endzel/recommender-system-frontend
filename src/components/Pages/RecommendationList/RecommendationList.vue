@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center">
         <b-container>
             <b-row cols="4" class="header-infos">
-                <b-col><card color="yellow" title="Valoración:" @update="setValoration"></card></b-col>
+                <b-col><valoration-card color="yellow" title="Valoración:" @update="setValoration"></valoration-card></b-col>
                 <b-col>
                     <span class="subtitle">Recomendación para {{this.infos.city.name}}</span>
                     <span>Compañeros de viaje: {{ this.company }} </span>
@@ -58,10 +58,12 @@
                 let params = {}
                 params["recommendation"] = this.$route.params.id
                 params["score"] = this.valoration
-                this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación guardada correctamente!'})
-                // this.apiPost('valorations', params).then(response => {
-                //
-                // }, response => {});
+                params["user"] = this.$store.state.user
+                this.apiPost('valorations', params).then(response => {
+                    this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación guardada correctamente 😊'})
+                }, response => {
+                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu recomendación 😥'})
+                });
             },
             setValoration(value) {
                 this.valoration = value

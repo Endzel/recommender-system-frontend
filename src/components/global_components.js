@@ -15,8 +15,8 @@ Vue.component('alert', AlertElement);
 import Button from './utils/misc/Button'
 Vue.component('btn', Button);
 
-import Card from './utils/misc/Card'
-Vue.component('card', Card);
+import ValorationCard from './utils/misc/ValorationCard'
+Vue.component('valoration-card', ValorationCard);
 
 import Tag from './utils/misc/Tag'
 Vue.component('tag', Tag);

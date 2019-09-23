@@ -1,6 +1,6 @@
 <template>
     <b-container>
-        <b-row class="header-infos">
+        <b-row class="header-infos mt-3">
             <b-col><pic id="image" v-if="data.image !== undefined && data.image !== null" fluid :type="'background_image'" :src="data.image"/></b-col>
             <b-col cols="6">
                 <tag class="title" :value="data.name"/>
@@ -18,9 +18,13 @@
             </b-col>
             <b-col><iframe v-if="data.gps_point !== undefined && data.gps_points !== null" :src="data.gps_point" width="400" height="380" frameborder="0" style="border:0;" allowfullscreen=""></iframe></b-col>
         </b-row>
-        <b-row>
-            <b-col><span class="description">{{ data.description }}</span></b-col>
-            <!-- <b-col><card color="yellow" title="Valoración:" @update="setValoration"></card></b-col> -->
+        <b-row class="details-body mt-5">
+            <b-col><span>{{ data.description }}</span></b-col>
+        </b-row>
+        <b-row class="details-body mt-5">
+            <b-col><valoration-card color="yellow" :initialValue="this.data.valoration.score" title="Valoración:" @update="setValoration"></valoration-card></b-col>
+            <b-col cols="2" class="justify-content-center align-items-center text-center"><span class="align-items-center mt-4" style="display:inline-flex;">Write your review here:</span></b-col>
+            <b-col><text-area-field :initialValue="this.comment" @update="updateComment"></text-area-field></span></b-col>
         </b-row>
     </b-container>
 </template>
@@ -30,17 +34,46 @@
         name: 'ItemDetails',
         data () {
             return {
-                data: null
+                data: {},
+                comment: ""
             }
         },
         methods: {
             clicked() {
                 this.$emit('click')
             },
+            updateComment(value) {
+                this.comment = value
+            },
+            setValoration(value) {
+                let params = {}
+                params['score'] = value
+                params['item'] = this.$route.params.id
+                params['comment'] = this.comment
+                params['user'] = this.$store.state.user
+                if (this.isEmpty(this.data.valoration)) {
+                    this.apiPost('valorations', params).then(response => {
+                        this.valoration.data = response.data
+                        this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Valoración creada correctamente 😊'})
+                    }, response => {
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu valoración 😥'})
+                    });
+                } else {
+                    this.apiPatch('valorations/' + this.data.valoration.id, params).then(response => {
+                        this.data.valoration = response.data
+                        this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Valoración guardada correctamente 😊'})
+                    }, response => {
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu valoración 😥'})
+                    });
+                }
+            },
         },
         created: function () {
             this.apiGet('items/' + this.$route.params.id).then(response => {
                 this.data = response.data
+                if (!this.isEmpty(this.data.valoration)){
+                    this.comment = this.data.valoration.comment
+                }
             }, response => {});
         }
     }
@@ -64,15 +97,15 @@
             font-size: 38px;
         }
         .middle-infos {
+            font-size: 20px;
             margin-top: 7%;
             margin-left: 30%;
         }
     }
 
-    .description {
-        width: 80%;
+    .details-body {
+        width: 90%;
         margin-left: 5%;
-        margin-right: 5%;
     }
 
 </style>

@@ -4,7 +4,6 @@
             <div v-if="label !== null" class="label"><span>{{ label }}</span></div>
         </div>
         <textarea
-            v-if="this.edit"
             class="input"
             :value="this.value"
             :placeholder="placeholder"
@@ -52,6 +51,7 @@
         methods: {
             updateValue(value) {
                 this.value = value
+                this.$emit('update', value)
             },
         },
         created: function() {
@@ -71,19 +71,19 @@
             margin-bottom: 10px;
             .label {
                 text-align: left;
-                font-size: $slarge;
+                font-size: $medium;
                 color: $black;
                 font-weight: bold;
             }
         }
         .input {
             width: 100%;
+            min-height: 90px;
             padding-left: 10px;
             padding-right: 10px;
-            width: 100%;
             border-radius: 5px;
             border: solid 1px $grey;
-            font-size: $medium;
+            font-size: $small;
             background-color: $white;
             outline: none;
             transition: box-shadow .3s ease, border .3s ease, color .3s ease;
