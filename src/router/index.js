@@ -8,6 +8,7 @@ import Valorations from '@/components/Pages/Valorations/Valorations'
 import Preferences from '@/components/Pages/Preferences/Preferences'
 import Historic from '@/components/Pages/Historic/Historic'
 import RecommendationList from '@/components/Pages/RecommendationList/RecommendationList'
+import ItemDetails from '@/components/Pages/RecommendationList/ItemDetails'
 
 Vue.use(Router)
 
@@ -53,6 +54,11 @@ export default new Router({
           path: '/recommendation/:id',
           name: 'RecommendationList',
           component: RecommendationList
+        },
+        {
+          path: '/items/:id',
+          name: 'ItemDetails',
+          component: ItemDetails
         },
     ],
     mode: 'history',
