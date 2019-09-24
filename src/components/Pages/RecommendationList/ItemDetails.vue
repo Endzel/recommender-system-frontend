@@ -1,7 +1,8 @@
 <template>
     <b-container>
         <b-row class="header-infos mt-3">
-            <b-col><pic id="image" v-if="data.image !== undefined && data.image !== null" fluid :type="'background_image'" :src="data.image"/></b-col>
+            <b-col v-if="data.image !== undefined && data.image !== null"><pic id="image" fluid :type="'background_image'" :src="data.image"/></b-col>
+            <b-col v-else><pic id="background-image" :type="'background_image'" fluid :src="require('@/assets/images/default-item.jpg')"/></b-col>
             <b-col cols="6">
                 <tag class="title" :value="data.name"/>
                 <div class="justify-content-center text-center">
@@ -22,9 +23,9 @@
             <b-col><span>{{ data.description }}</span></b-col>
         </b-row>
         <b-row class="details-body mt-5">
-            <b-col><valoration-card color="yellow" :initialValue="this.data.valoration.score" title="Valoración:" @update="setValoration"></valoration-card></b-col>
+            <b-col><valoration-card v-if="ready" color="yellow" :initialValue="valoration" title="Valoración:" @update="setValoration"></valoration-card></b-col>
             <b-col cols="2" class="justify-content-center align-items-center text-center"><span class="align-items-center mt-4" style="display:inline-flex;">Write your review here:</span></b-col>
-            <b-col><text-area-field :initialValue="this.comment" @update="updateComment"></text-area-field></span></b-col>
+            <b-col><text-area-field v-if="ready" :initialValue="comment" @update="updateComment"></text-area-field></span></b-col>
         </b-row>
     </b-container>
 </template>
@@ -35,9 +36,11 @@
         data () {
             return {
                 data: {
-                    valoration: {}
+                    city: {}
                 },
-                comment: ""
+                comment: "",
+                valoration: 0,
+                ready: false
             }
         },
         methods: {
@@ -55,7 +58,7 @@
                 params['user'] = this.$store.state.user
                 if (this.isEmpty(this.data.valoration)) {
                     this.apiPost('valorations', params).then(response => {
-                        this.valoration.data = response.data
+                        this.data.valoration = response.data
                         this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Valoración creada correctamente 😊'})
                     }, response => {
                         this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu valoración 😥'})
@@ -75,7 +78,9 @@
                 this.data = response.data
                 if (!this.isEmpty(this.data.valoration)){
                     this.comment = this.data.valoration.comment
+                    this.valoration = this.data.valoration.score
                 }
+                this.ready = true
             }, response => {});
         }
     }
@@ -101,7 +106,7 @@
         .middle-infos {
             font-size: 20px;
             margin-top: 7%;
-            margin-left: 30%;
+            margin-left: 15%;
         }
     }
 
