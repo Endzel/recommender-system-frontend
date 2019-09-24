@@ -6,7 +6,7 @@
                     <span class="title">Preferencias</span>
                 </b-col>
             </b-row>
-            <b-row v-if="ready" v-for="i in rowCount">
+            <b-row v-if="ready" v-for="i in rowCount" :key="i">
                 <b-col cols="6" v-for="(context, index) in context_segments.slice((i - 1) * 2, i * 2)" :key="context.id">
                     <preference-card :data="context"></preference-card>
                 </b-col>
