@@ -4,7 +4,7 @@
             <b-col v-if="data.image !== undefined && data.image !== null"><pic id="image" fluid :type="'background_image'" :src="data.image"/></b-col>
             <b-col v-else><pic id="background-image" :type="'background_image'" fluid :src="require('@/assets/images/default-item.jpg')"/></b-col>
             <b-col cols="6">
-                <tag class="title" :value="data.name"/>
+                <tag class="title text-center" :value="data.name"/>
                 <div class="justify-content-center text-center">
                     <b-row>
                         <span class="middle-infos">Lugar: {{ data.city.name }}, {{ data.city.country }}</span>
