@@ -35,12 +35,12 @@
         },
         methods: {
             getItems() {
-                this.apiGet('items').then(response => {
+                this.apiGet('items/valorated').then(response => {
                     this.items = response.data
                 }, response => {});
             },
             getRecommendations() {
-                this.apiGet('recommendations').then(response => {
+                this.apiGet('recommendations/valorated').then(response => {
                     this.recommendations = response.data
                 }, response => {});
             },

@@ -14,6 +14,9 @@
                         </b-col>
                     </b-row>
                     <b-row cols="6">
+                        <b-col cols="2" v-if="!this.isEmpty(this.data.valoration)">
+                            <tag size="big" :value="this.data.valoration.score * 10" color="orange"/>
+                        </b-col>
                         <b-col>
                             <a class="float-right link" :href="data.weblink">{{data.weblink}}</a>
                         </b-col>
@@ -34,9 +37,7 @@
             },
         },
         data () {
-            return {
 
-            }
         },
         methods: {
             clicked() {
