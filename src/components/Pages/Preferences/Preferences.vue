@@ -3,7 +3,7 @@
         <b-container>
             <b-row class="header-infos">
                 <b-col class="mb-4">
-                    <span class="title">Preferences</span>
+                    <span class="title">Preferencias</span>
                 </b-col>
             </b-row>
             <b-row v-if="ready" v-for="i in rowCount">
