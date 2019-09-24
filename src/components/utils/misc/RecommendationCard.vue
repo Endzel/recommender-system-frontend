@@ -70,7 +70,7 @@
         border-radius: 5px;
         height: 150px;
         width: 100%;
-        min-width: 500px;
+        min-width: 400px;
         background-color: rgba(0, 200, 0, 0.3);
         transition: background .3s ease, color .3s ease;
         .recommendation-row {

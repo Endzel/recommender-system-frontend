@@ -27,6 +27,9 @@ Vue.component('item-card', ItemCard);
 import RecommendationCard from './utils/misc/RecommendationCard'
 Vue.component('recommendation-card', RecommendationCard);
 
+import PreferenceCard from './utils/misc/PreferenceCard'
+Vue.component('preference-card', PreferenceCard);
+
 import SelectField from './utils/fields/SelectField'
 Vue.component('select-field', SelectField);
 
