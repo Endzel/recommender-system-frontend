@@ -1,5 +1,5 @@
 <template>
-    <div :class="'tag-label ' + ' tag-label-' + color" v-on:click="clicked">
+    <div :class="'tag-label ' + ' tag-label-' + color + ' size-' + size" v-on:click="clicked">
         <span>{{ this.value }}</span>
     </div>
 </template>
@@ -17,6 +17,11 @@
                 type: String,
                 required: false,
                 default: ''
+            },
+            size: {
+                type: String,
+                required: false,
+                default: 'normal'
             },
         },
         methods: {
@@ -41,6 +46,11 @@
         border-radius: 8px;
     }
 
+    .size-big {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
     .tag-label-grey {
         background-color: $grey;
         color: $black;
@@ -51,6 +61,12 @@
         background-color: $red;
         color: $black;
         border: solid 1px $red;
+    }
+
+    .tag-label-orange {
+        background-color: $orange;
+        color: $black;
+        border: solid 1px $orange;
     }
 
     .tag-label-green {
@@ -83,6 +99,11 @@
 
     .tag-label-red:hover{
         background-color: $red;
+        color: $white;
+    }
+
+    .tag-label-orange:hover{
+        background-color: $orange;
         color: $white;
     }
 

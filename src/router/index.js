@@ -51,7 +51,7 @@ export default new Router({
           component: Valorations
         },
         {
-          path: '/recommendation/:id',
+          path: '/recommendations/:id',
           name: 'RecommendationList',
           component: RecommendationList
         },

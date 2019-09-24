@@ -2,7 +2,7 @@
     <div class="d-flex align-items-center">
         <b-container>
             <b-row cols="4" class="header-infos">
-                <b-col><valoration-card color="yellow" title="Valoración:" @update="setValoration"></valoration-card></b-col>
+                <b-col><valoration-card v-if="this.ready" :initialValue="this.valoration" color="yellow" title="Valoración:" @update="setValoration"></valoration-card></b-col>
                 <b-col>
                     <span class="subtitle">Recomendación para {{this.infos.city.name}}</span>
                     <span>Compañeros de viaje: {{ this.company }} </span>
@@ -36,9 +36,15 @@
         component: {},
         data () {
             return {
-                infos: {},
+                infos: {
+                    valoration: {
+                        score: 0
+                    },
+                    city: {}
+                },
                 items: [],
-                valoration: null,
+                valoration: 0,
+                ready: false,
                 company: ""
             }
         },
@@ -47,11 +53,15 @@
                 this.apiGet('recommendations/' + this.$route.params.id).then(response => {
                     this.items = response.data.items
                     this.infos = response.data
+                    if (!this.isEmpty(response.data.valoration)) {
+                        this.valoration = response.data.valoration.score
+                    }
                     let company = ""
                     this.infos.group.users.forEach(function(e) {
                         company = company + e.first_name + " " + e.last_name + ", "
                     })
                     this.company = company.substring(0, company.length - 2);
+                    this.ready = true
                 }, response => {});
             },
             saveRecommendation() {
@@ -59,18 +69,28 @@
                 params["recommendation"] = this.$route.params.id
                 params["score"] = this.valoration
                 params["user"] = this.$store.state.user
-                this.apiPost('valorations', params).then(response => {
-                    this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Recomendación guardada correctamente 😊'})
-                }, response => {
-                    this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu recomendación 😥'})
-                });
+                if (this.isEmpty(this.infos.valoration)) {
+                    this.apiPost('valorations', params).then(response => {
+                        this.valoration = response.data.score
+                        this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Valoración creada correctamente 😊'})
+                    }, response => {
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu valoración 😥'})
+                    });
+                } else {
+                    this.apiPatch('valorations/' + this.infos.valoration.id, params).then(response => {
+                        this.valoration = response.data.score
+                        this.$store.dispatch('setAlert', { show: true, type: 'success', message: 'Valoración guardada correctamente 😊'})
+                    }, response => {
+                        this.$store.dispatch('setAlert', { show: true, type: 'error', message: 'No fue posible guardar tu valoración 😥'})
+                    });
+                }
             },
             setValoration(value) {
                 this.valoration = value
             },
         },
         created: function() {
-            this.getRecommendation();
+            this.getRecommendation()
         },
     }
 </script>

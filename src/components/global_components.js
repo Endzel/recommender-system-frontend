@@ -24,6 +24,9 @@ Vue.component('tag', Tag);
 import ItemCard from './utils/misc/ItemCard'
 Vue.component('item-card', ItemCard);
 
+import RecommendationCard from './utils/misc/RecommendationCard'
+Vue.component('recommendation-card', RecommendationCard);
+
 import SelectField from './utils/fields/SelectField'
 Vue.component('select-field', SelectField);
 

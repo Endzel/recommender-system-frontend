@@ -34,7 +34,9 @@
         name: 'ItemDetails',
         data () {
             return {
-                data: {},
+                data: {
+                    valoration: {}
+                },
                 comment: ""
             }
         },
