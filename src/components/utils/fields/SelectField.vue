@@ -36,6 +36,7 @@
         methods: {
             updateValue(value) {
                 this.value = value
+                this.$emit('input', value)
             },
         },
         created: function() {
@@ -55,7 +56,7 @@
     .div-select {
         width: 100%;
         margin-bottom: 10px;
-        min-height: 70px;
+        min-height: 40px;
         .field-header {
             margin-bottom: 10px;
             .label {

@@ -1,22 +1,17 @@
 <template>
     <b-navbar id="navbar" fixed="up" toggleable="lg" variant="faded" type="dark">
-        <b-container class="main-container">
+        <btn v-if="is_staff" @click="goToAdmin" color="blue" class="btn-admin">Configurar motor</btn>
+        <b-container class="navbar-section">
             <b-nav-toggle target="nav_collapse"></b-nav-toggle>
-            <b-collapse is-nav id="nav_collapse">
+            <b-collapse is-nav id="nav_collapse" class="navbar-section">
                 <b-navbar-nav class="ml-auto">
                     <b-navbar-nav>
-                        <b-nav-item :to="{ name: 'Buscar'}"><span class="navbar-section">Buscar</span></b-nav-item>
-                        <b-nav-item :to="{ name: 'Preferencias'}"><span class="navbar-section">Preferencias</span></b-nav-item>
-                        <b-nav-item :to="{ name: 'Historial'}"><span class="navbar-section">Historial</span></b-nav-item>
-                        <b-nav-item :to="{ name: 'Valoraciones'}"><span class="navbar-section">Valoraciones</span></b-nav-item>
-                        <b-nav-item :to="{ name: 'Amigos'}"><span class="navbar-section">Amigos</span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Home'}"><span>Buscar</span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Preferences'}"><span>Preferencias</span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Historic'}"><span>Historial</span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Valorations'}"><span>Valoraciones</span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Login', query: { logout: true }}">Salir</b-nav-item></span></b-nav-item>
                     </b-navbar-nav>
-                    <b-nav-item-dropdown right id="userMenu">
-                        <template slot="button-content">
-                            <span class="username">{{ this.email }}</span>
-                        </template>
-                        <b-dropdown-item :to="{ name: 'Login', query: { logout: true }}">Log out</b-dropdown-item>
-                    </b-nav-item-dropdown>
                 </b-navbar-nav>
             </b-collapse>
         </b-container>
@@ -26,13 +21,24 @@
 <script>
     export default {
         name: 'Navbar',
+        data: function () {
+            return {
+                user_staff: false
+            }
+        },
         computed: {
-            email() {
-                return this.$store.state.email;
-            },
             section_focused() {
                 return this.$store.state.section_focused;
             },
+            is_staff() {
+                this.user_staff = this.$store.state.is_staff
+                return this.user_staff
+            },
+        },
+        methods: {
+            goToAdmin() {
+                window.location.href = "http://localhost:8000/admin/"
+            }
         }
     }
 </script>
@@ -51,24 +57,20 @@
         margin: auto;
     }
 
-    .username {
-        font-size: $medium;
-    }
-
-    .dropdown {
-        .dropdown-menu {
-            a {
-                text-decoration: none;
-                outline: none;
-            }
-            #profile-picture {
-                border: 1px solid $white;
-            }
+    .navbar-section {
+        font-size: 16px;
+        justify-content: center;
+        .navbar-nav {
+            justify-content: space-evenly;
+            width: 100%;
+            margin-left: 0px;
         }
     }
 
-    .navbar-section {
-        font-size: 14px;
+    .btn-admin {
+        max-width: 200px;
+        height: 80px;
+        font-size: 16px;
     }
 
 </style>

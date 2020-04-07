@@ -21,11 +21,11 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   resolve: {
-    extensions: ['.js', '.vue', '.json', '.jpeg', '.jpg', '.svg', '.png', '.gif'],
+    extensions: ['.js', '.vue', '.json', '.jpeg', '.jpg'],
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'assets': resolve('src/assets')
+      'assets': resolve('src/assets'),
     }
   },
   module: {
@@ -39,6 +39,14 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader',
         include: [resolve('src'), resolve('test')]
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
+        loader: 'url-loader',
+        options: {
+          limit: 10000,
+          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+        }
       },
       {
         test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
@@ -57,5 +65,5 @@ module.exports = {
         }
       }
     ]
-  }
+  },
 }

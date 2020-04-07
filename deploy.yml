@@ -1,0 +1,15 @@
+version: '3.7'
+
+networks:
+  ${STACK_NETWORK}:
+    external: true
+
+services:
+
+  vuejs:
+    image: recommender_frontend
+    command: npm run dev
+    ports:
+      - 8080:8080
+    networks:
+      - ${STACK_NETWORK}

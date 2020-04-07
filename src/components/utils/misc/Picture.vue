@@ -1,5 +1,5 @@
 <template>
-        <b-img :src="this.image_src" :class="this.type" :fluid="fluid" :width="width" :height="height"/>
+        <b-img :src="this.src" :class="this.type" :fluid="fluid" :width="width" :height="height"/>
 </template>
 
 <script>
@@ -23,19 +23,11 @@
                 type: String,
                 required: false,
             },
-        },
-        data () {
-            return {
-                image_src: null,
-            }
-        },
-        computed: {
-        },
-        methods: {
-            clicked() {
-                this.$emit('click')
+            type: {
+                type: String,
+                required: false,
             },
-        },
+        }
     }
 </script>
 

@@ -1,13 +1,32 @@
 <template>
     <div class="login d-flex align-items-center">
         <b-container>
-            <b-row><b-col class="title">Sistema de recomendación turístico grupal</b-col></b-row>
+            <b-row><b-col class="title">Bienvenido</b-col></b-row>
             <b-container id="login-form">
-                <b-form-group :feedback="feedbacks.form" :state="states.form" class="form-validation">
-                    <b-row><b-col><b-form-input placeholder="your@example.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"></b-form-input></b-col></b-row>
-                    <b-row><b-col><b-form-input placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"></b-form-input></b-col></b-row>
+                <b-form-group class="form-validation">
+                    <b-row><b-col>
+                        <input-field placeholder="alumno@ejemplo.com" v-model.trim="login_body.username" @keydown.enter.native="login" type="email"/>
+                     </b-col></b-row>
+                    <b-row><b-col>
+                        <input-field placeholder="••••••••" v-model.trim="login_body.password" type="password" @keydown.enter.native="login"/>
+                    </b-col></b-row>
                 </b-form-group>
-                <b-row><b-col><btn size="lg" color="purple" @click="login()">Log in</btn></b-col></b-row>
+                <b-row v-show="this.feedback !== ''">
+                    <b-col>
+                        <p class="feedback-error">{{ this.feedback }}</p>
+                    </b-col>
+                </b-row>
+                <b-row>
+                    <b-col>
+                        <btn size="big" color="green" @click="login()">Acceder</btn>
+                    </b-col>
+                    <b-col>
+                        <btn size="big" color="green" @click="toRegister()">Registrarse</btn>
+                    </b-col>
+                </b-row>
+                <b-row class="align-items-center justify-content-center">
+                    <btn size="medium" color="blue" @click="toForgotPassword()">Olvidé mi contraseña...</btn>
+                </b-row>
             </b-container>
         </b-container>
     </div>
@@ -19,15 +38,26 @@
         data () {
             return {
                 login_body: {},
-                validate: true,
+                feedback: '',
             }
         },
         methods: {
             login() {
-                this.apiPost('login/', this.login_body).then(response => {
+                this.apiPost('users/login', this.login_body).then(response => {
                     this.$store.dispatch('login', response.data)
-                }, error => {
+                }, response => {
+                    if (response.body !== undefined && response.body !== null) {
+                        this.feedback = response.body.error;
+                    } else {
+                        this.feedback = 'Tus credenciales no son correctas!'
+                    }
                 });
+            },
+            toRegister() {
+                this.$router.push({ name: 'Register' })
+            },
+            toForgotPassword() {
+                this.$router.push({ name: 'ForgotPassword' })
             },
         },
         beforeCreate: function(state) {
@@ -53,17 +83,11 @@
         text-align: center;
         .title {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 10px;
         }
         #login-form {
             max-width: 400px;
         }
-    }
-
-    .hvr-grow-shadow {
-        box-shadow: 0 10px 10px -10px rgba(0, 0, 0, 0.5);
-        -webkit-transform: scale(1.1);
-        transform: scale(1.1);
     }
 
 </style>
