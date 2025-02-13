@@ -15,7 +15,7 @@
     "staticpath": "dist"
   },
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "^1.7.9",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.0",
     "hover.css": "^2.3.1",
