@@ -22,7 +22,7 @@
     "jquery": "^3.5.0",
     "lodash": "^4.17.21",
     "npm": "^10.2.5",
-    "vue": "^2.5.16",
+    "vue": "^3.0.0",
     "vue-async-computed": "^3.3.1",
     "vue-bootstrap-typeahead": "^0.1.2",
     "vue-cookie": "^1.1.4",
