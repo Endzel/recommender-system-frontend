@@ -30,7 +30,7 @@
     "vue-good-table": "^2.21.11",
     "vue-i18n": "^7.8.1",
     "vue-lodash": "^2.1.2",
-    "vue-ls": "^3.2.2",
+    "vue-ls": "^4.2.0",
     "vue-moment": "^4.1.0",
     "vue-multiselect": "^2.1.9",
     "vue-resource": "^1.5.3",
