@@ -64,7 +64,7 @@
     "compression-webpack-plugin": "^11.1.0",
     "copy-webpack-plugin": "^12.0.2",
     "cross-spawn": "^7.0.6",
-    "css-loader": "^6.11.0",
+    "css-loader": "^7.1.2",
     "eventsource-polyfill": "^0.9.6",
     "extract-text-webpack-plugin": "^2.1.2",
     "file-loader": "^1.1.11",
