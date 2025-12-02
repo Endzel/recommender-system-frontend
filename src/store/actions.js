@@ -4,17 +4,18 @@ import VueCookie from 'vue-cookie'
 import VueLocalStorage from 'vue-ls'
 import router from './../router'
 import Vue from 'vue'
+import axios from 'axios'
 
 export default {
     async login(context, data) {
         // Save user token
         context.commit('saveUserToken', data)
         var headers = {'Content-Type': 'application/json', 'Accept': 'application/json', "Authorization": "Token " + data.token, 'X-CSRFToken': context.getters.apiInfos.csrftoken};
-        await Vue.http.get(context.getters.apiInfos.domain + 'users', {headers: headers}).then(response => {
-            context.commit('saveUserInfos', response.body)
+        await axios.get(context.getters.apiInfos.domain + 'users', {headers: headers}).then(response => {
+            context.commit('saveUserInfos', response.data)
             context.commit('setLoggedIn', true)
             router.push({name: 'Home'})
-        }, response => {
+        }).catch(error => {
         });
 
         return Promise.resolve();
@@ -38,9 +39,9 @@ export default {
             var api_domain = context.getters.apiInfos.domain
 
             var headers = {'Content-Type': 'application/json', 'Accept': 'application/json', "Authorization": "Token " + context.getters.apiInfos.token, 'X-CSRFToken': context.getters.apiInfos.csrftoken,};
-            await Vue.http.get(context.getters.apiInfos.domain + 'users', {headers: headers}).then(response => {
-                context.commit('saveUserInfos', response.body)
-            }, response => {
+            await axios.get(context.getters.apiInfos.domain + 'users', {headers: headers}).then(response => {
+                context.commit('saveUserInfos', response.data)
+            }).catch(error => {
                 context.dispatch('logout')
             });
         } else {

@@ -1,0 +1,26 @@
+
+> groupal-touristic-recommender@1.1.0 build
+> node build/build.js
+
+node:fs:435
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: EPERM: operation not permitted, open '/Users/angeljimenez/Projects/recommender-system-frontend/node_modules/path-key/index.js'
+    at Object.readFileSync (node:fs:435:20)
+    at defaultLoadImpl (node:internal/modules/cjs/loader:1138:17)
+    at loadSource (node:internal/modules/cjs/loader:1787:20)
+    at Object..js (node:internal/modules/cjs/loader:1885:44)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:245:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16) {
+  errno: -1,
+  code: 'EPERM',
+  syscall: 'open',
+  path: '/Users/angeljimenez/Projects/recommender-system-frontend/node_modules/path-key/index.js'
+}
+
+Node.js v25.2.1

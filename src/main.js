@@ -9,7 +9,6 @@ import App from './App'
 import router from './router'
 import Vuex from 'vuex'
 import VueCookie from 'vue-cookie'
-import VueResource from 'vue-resource'
 import VueLocalStorage from 'vue-ls'
 
 import AsyncComputed from 'vue-async-computed'
@@ -18,7 +17,6 @@ import AsyncComputed from 'vue-async-computed'
 Vue.use(AsyncComputed)
 Vue.use(Vuex)
 Vue.use(BootstrapVue)
-Vue.use(VueResource)
 
 //Global imports
 import store from '@/store/index.js'
@@ -42,9 +40,6 @@ export default VueGlobal;
 
 Vue.use(VueLocalStorage, options);
 Vue.use(VueCookie);
-
-Vue.http.headers.common['Content-Type'] = 'application/json';
-Vue.http.headers.common['Accept'] = 'application/json';
 
 Vue.config.productionTip = false
 
