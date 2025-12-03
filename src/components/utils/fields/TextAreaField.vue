@@ -61,7 +61,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
     .div-text-area {
         width: 100%;

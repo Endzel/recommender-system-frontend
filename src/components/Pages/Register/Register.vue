@@ -43,7 +43,7 @@
                 </b-row>
                 <b-row>
                     <b-col>
-                        <btn size="big" color="green" @click="register()">Completar registro</btn>
+                        <btn size="biggest" color="green" @click="register()">Completar registro</btn>
                     </b-col>
                 </b-row>
             </b-container>
@@ -91,7 +91,7 @@
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
 
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
 
     .register {
@@ -111,6 +111,7 @@
         }
         #register-form {
             max-width: 400px;
+            margin: 0 auto;
         }
         .error {
             font-weight: bold;

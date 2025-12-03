@@ -33,7 +33,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
     .div-date {
         width: 100%;

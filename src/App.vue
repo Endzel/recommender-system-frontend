@@ -51,7 +51,7 @@
 </script>
 
 <style lang="scss">
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
     html, body {
         font: $main-font;
@@ -98,41 +98,6 @@
 
     .btn {
         cursor: pointer;
-    }
-
-    .button {
-        cursor: pointer;
-        border-radius: 5px;
-        color: $white;
-        line-height: 100px;
-        white-space: nowrap;
-        border: none;
-        height: 40px;
-        padding-top: 10px !important;
-        padding-bottom: 10px !important;
-        font: $main-font;
-        width: 100%;
-        background-color: $grey !important;
-        transition: box-shadow .3s ease, background .3s ease;
-        &-sm {
-            font-size: $small;
-            height: 30px;
-            padding-top: 8px !important;
-            padding-bottom: 8px !important;
-        }
-        &-nf {
-            width: auto;
-        }
-        &:hover, &-sm:hover, &-focused {
-            background-color: $black !important;
-            box-shadow: 0 5px 28px rgba($grey, 0.25), 0 5px 10px rgba($grey, 0.22);
-        }
-        &:focus, &-sm:focus {
-            background-color: $black !important;
-        }
-        &:active, &-sm:active {
-            box-shadow: none !important;
-        }
     }
 
     a.button {

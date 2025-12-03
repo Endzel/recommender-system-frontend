@@ -27,11 +27,13 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
     .button {
         cursor: pointer;
-        border-radius: 5px;
+        padding: 8px;
+        margin: 8px;
+        border-radius: 8px;
         color: $white !important;
         height: 35px;
         font: $main-font;
@@ -42,8 +44,6 @@
         @media (max-width: 767px) {
             font-size: $small;
         }
-        padding-top: 0px !important;
-        padding-bottom: 0px !important;
         &-biggest {
             width: 100%;
         }

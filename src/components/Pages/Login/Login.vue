@@ -1,5 +1,5 @@
 <template>
-    <div class="login d-flex align-items-center">
+    <div class="login d-flex align-items-center justify-content-center">
         <b-container>
             <b-row><b-col class="title">Bienvenido</b-col></b-row>
             <b-container id="login-form">
@@ -16,16 +16,18 @@
                         <p class="feedback-error">{{ this.feedback }}</p>
                     </b-col>
                 </b-row>
-                <b-row>
+                <b-row class="mb-3">
                     <b-col>
-                        <btn size="big" color="green" @click="login()">Acceder</btn>
+                        <btn size="biggest" color="green" @click="login()">Acceder</btn>
                     </b-col>
                     <b-col>
-                        <btn size="big" color="green" @click="toRegister()">Registrarse</btn>
+                        <btn size="biggest" color="green" @click="toRegister()">Registrarse</btn>
                     </b-col>
                 </b-row>
                 <b-row class="align-items-center justify-content-center">
-                    <btn size="medium" color="blue" @click="toForgotPassword()">Olvidé mi contraseña...</btn>
+                    <b-col>
+                        <btn size="biggest" color="blue" @click="toForgotPassword()">Olvidé mi contraseña...</btn>
+                    </b-col>
                 </b-row>
             </b-container>
         </b-container>
@@ -74,7 +76,7 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
-    @import 'src/assets/css/global.scss';
+    @use '@/assets/css/global.scss' as *;
 
     .login {
         width: 100%;
@@ -87,6 +89,7 @@
         }
         #login-form {
             max-width: 400px;
+            margin: 0 auto;
         }
     }
 
