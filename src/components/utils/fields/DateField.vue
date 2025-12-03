@@ -1,18 +1,19 @@
 <template>
     <div class="div-date">
         <b-row>
-            <b-col><datepicker value="value" v-model="value" format="yyyy-MM-dd" @input="updateValue"></datepicker></b-col>
+            <b-col><datepicker v-model="value" format="yyyy-MM-dd" @update:model-value="updateValue" :enable-time-picker="false"></datepicker></b-col>
             <b-col><i class="fa fa-calendar" aria-hidden="true"/></b-col>
         </b-row>
     </div>
 </template>
 
 <script>
-    import Datepicker from 'vuejs-datepicker'
+    import { VueDatePicker } from '@vuepic/vue-datepicker'
+    import '@vuepic/vue-datepicker/dist/main.css'
 
     export default {
         name: 'DateField',
-        components: { 'datepicker': Datepicker, },
+        components: { 'datepicker': VueDatePicker, },
         props: {},
         data () {
             return {
@@ -23,11 +24,7 @@
             updateValue(value) {
                 this.value = value
                 if (value !== null && value !== undefined){
-                    if (typeof value !== 'string') {
-                        this.$emit('input', value.toISOString().split('T')[0])
-                    } else {
-                        this.$emit('input', value.split('T')[0])
-                    }
+                     this.$emit('update:modelValue', value.toISOString().split('T')[0])
                 }
             },
         },

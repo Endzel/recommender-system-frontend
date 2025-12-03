@@ -1,28 +1,33 @@
 // Store mutations
-
-import VueLocalStorage from 'vue-ls'
-import VueCookie from 'vue-cookie'
-import Vue from 'vue'
+import { useCookies } from 'vue3-cookies'
+// import VueLocalStorage from 'vue-ls' // Need replacement
+// For now, mocking ls or using simple localStorage
+const ls = {
+  get(key) { return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : null },
+  set(key, val) { localStorage.setItem(key, JSON.stringify(val)) },
+  remove(key) { localStorage.removeItem(key) }
+}
+const { cookies } = useCookies();
 
 export default {
     saveUserToken(state, data) {
-        var expiry = 60 * 60 * 1000 * 24 * 60; // 60 day
-        VueCookie.set('token', data.token, expiry)
+        var expiry = 60 * 60 * 24 * 60; // 60 day in seconds? Check vue3-cookies API. usually it's string or seconds.
+        cookies.set('token', data.token, expiry + 's')
         state.api.token = data.token
-        state.api.csrftoken = VueCookie.get('csrftoken')
+        state.api.csrftoken = cookies.get('csrftoken')
     },
     saveUserInfos(state, logInfos) {
       state.user = logInfos.id;
       state.is_staff = logInfos.is_staff;
-      state.cache_data = Vue.ls.get('cachedata');
-      state.section_focused = Vue.ls.get('section_focused')
+      state.cache_data = ls.get('cachedata');
+      state.section_focused = ls.get('section_focused')
     },
     removeUserInfos(state) {
       state.user = null
       state.api.token = null
       state.is_staff = null
-      VueCookie.delete('csrftoken');
-      VueCookie.delete('token');
+      cookies.remove('csrftoken');
+      cookies.remove('token');
       state.section_focused = null
     },
     setLoggedIn(state, logged_in) {
@@ -30,14 +35,14 @@ export default {
     },
     setFocusedSection(state, section) {
       state.section_focused = section
-      Vue.ls.set('section_focused', state.section_focused, state.expiry.local_storage);
+      ls.set('section_focused', state.section_focused);
     },
     cacheData(state, data) {
       if (state.cache_data === null) {
         state.cache_data = {};
       }
       state.cache_data[data.index] = data.data;
-      Vue.ls.set('cachedata', this.state.cache_data, state.expiry.local_storage);
+      ls.set('cachedata', state.cache_data);
     },
     setAlertInfos(state, alert) {
         state.alert.show = alert.show

@@ -25,7 +25,7 @@
         <b-row class="details-body mt-5">
             <b-col><valoration-card v-if="ready" color="yellow" :initialValue="valoration" title="Valoración:" @update="setValoration"></valoration-card></b-col>
             <b-col cols="2" class="justify-content-center align-items-center text-center"><span class="align-items-center mt-4" style="display:inline-flex;">Write your review here:</span></b-col>
-            <b-col><text-area-field v-if="ready" :initialValue="comment" @update="updateComment"></text-area-field></span></b-col>
+            <b-col><text-area-field v-if="ready" :initialValue="comment" @update="updateComment"></text-area-field></b-col>
         </b-row>
     </b-container>
 </template>

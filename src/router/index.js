@@ -1,5 +1,4 @@
-import Vue from 'vue'
-import Router from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/components/Pages/Login/Login'
 import Register from '@/components/Pages/Register/Register'
 import ForgotPassword from '@/components/Pages/Register/ForgotPassword'
@@ -10,11 +9,10 @@ import Historic from '@/components/Pages/Historic/Historic'
 import RecommendationList from '@/components/Pages/RecommendationList/RecommendationList'
 import ItemDetails from '@/components/Pages/RecommendationList/ItemDetails'
 
-Vue.use(Router)
-
-export default new Router({
+export default createRouter({
+    history: createWebHistory(),
     routes: [
-        {path: '*', redirect: '/'},
+        {path: '/:pathMatch(.*)*', redirect: '/'},
         {
           path: '/login',
           name: 'Login',
@@ -61,8 +59,7 @@ export default new Router({
           component: ItemDetails
         },
     ],
-    mode: 'history',
     scrollBehavior() {
-      return { x: 0, y: 0 };
+      return { left: 0, top: 0 };
     },
 })

@@ -9,7 +9,7 @@
         </b-row>
         <b-row class="field-group">
             <b-col><p>Fecha ida</p></b-col>
-            <b-col><date-field @input="updateStartDate"/></i></b-col>
+            <b-col><date-field @input="updateStartDate"/></b-col>
         </b-row>
         <b-row class="field-group">
             <b-col><p>Fecha vuelta</p></b-col>
@@ -175,7 +175,7 @@
     }
 </script>
 
-<style src="vue-multiselect/dist/vue-multiselect.min.css"></style>
+<style src="vue-multiselect/dist/vue-multiselect.css"></style>
 
 <style lang="scss" scoped>
 

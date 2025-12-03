@@ -12,11 +12,11 @@
 </template>
 
 <script>
-    import StarRating from 'vue-star-rating'
+    import starRating from 'vue3-star-ratings'
 
     export default {
         name: 'PreferenceCard',
-        components: { 'star-rating' : StarRating },
+        components: { 'star-rating' : starRating },
         props: {
             data: {
                 type: Object,

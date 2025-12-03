@@ -10,7 +10,7 @@
                         <b-nav-item :to="{ name: 'Preferences'}"><span>Preferencias</span></b-nav-item>
                         <b-nav-item :to="{ name: 'Historic'}"><span>Historial</span></b-nav-item>
                         <b-nav-item :to="{ name: 'Valorations'}"><span>Valoraciones</span></b-nav-item>
-                        <b-nav-item :to="{ name: 'Login', query: { logout: true }}">Salir</b-nav-item></span></b-nav-item>
+                        <b-nav-item :to="{ name: 'Login', query: { logout: true }}">Salir</b-nav-item>
                     </b-navbar-nav>
                 </b-navbar-nav>
             </b-collapse>

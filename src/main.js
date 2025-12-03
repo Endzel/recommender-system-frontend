@@ -1,55 +1,38 @@
 import '@/assets/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue-next/dist/bootstrap-vue-next.css'
 import '../node_modules/hover.css/css/hover-min.css'
-import BootstrapVue from 'bootstrap-vue'
+import { createBootstrap } from 'bootstrap-vue-next'
 
 // Functional modules
-import Vue from 'vue'
+import { createApp } from 'vue'
 import App from './App'
 import router from './router'
-import Vuex from 'vuex'
-import VueCookie from 'vue-cookie'
-import VueLocalStorage from 'vue-ls'
+import store from './store'
+import VueCookie from 'vue3-cookies'
+// import VueLocalStorage from 'vue-ls' // vue-ls not officially Vue 3 compatible, might need replacement or plugin wrapper
 
-import AsyncComputed from 'vue-async-computed'
-
-
-Vue.use(AsyncComputed)
-Vue.use(Vuex)
-Vue.use(BootstrapVue)
+// import AsyncComputed from 'vue-async-computed' // Not Vue 3 compatible, check for alternative
 
 //Global imports
-import store from '@/store/index.js'
-import '@/components/mixins/index.js'
+// import '@/components/mixins/index.js' // Converted to plugin plugin
+
 
 // Components
-import '@/components/global_components.js'
+import GlobalComponents from '@/components/global_components.js'
+import GlobalMixins from '@/components/mixins/index.js'
 
-var options = {
-  namespace: 'recommender__'
-};
+const app = createApp(App)
 
-const VueGlobal = {
-    install(Vue, options) {
+app.use(store)
+app.use(router)
+app.use(createBootstrap())
+app.use(VueCookie)
+app.use(GlobalComponents)
+app.use(GlobalMixins)
 
-    }
-}
+// VueLocalStorage and AsyncComputed might need specific Vue 3 plugins or implementations
+// For now, we will comment them out or basic setup if possible
+// app.use(VueLocalStorage, { namespace: 'recommender__' });
 
-export default VueGlobal;
-
-
-Vue.use(VueLocalStorage, options);
-Vue.use(VueCookie);
-
-Vue.config.productionTip = false
-
-
-
-new Vue({
-  el: '#app',
-  // i18n,
-  store,
-  router,
-  template: '<App/>',
-  components: { App }
-})
+app.mount('#app')

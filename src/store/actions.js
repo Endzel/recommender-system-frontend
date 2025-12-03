@@ -1,10 +1,9 @@
 // Store actions
 
-import VueCookie from 'vue-cookie'
-import VueLocalStorage from 'vue-ls'
+import { useCookies } from 'vue3-cookies'
 import router from './../router'
-import Vue from 'vue'
 import axios from 'axios'
+const { cookies } = useCookies();
 
 export default {
     async login(context, data) {
@@ -32,9 +31,9 @@ export default {
         context.commit('saveUserInfos', data)
     },
     async searchInfos(context) {
-        if (VueCookie.get('token') !== null ) {
+        if (cookies.get('token') !== null ) {
             context.commit('setLoggedIn', true)
-            context.commit('saveUserToken', { token: VueCookie.get('token'), })
+            context.commit('saveUserToken', { token: cookies.get('token'), })
             var token = context.getters.apiInfos.token
             var api_domain = context.getters.apiInfos.domain
 
