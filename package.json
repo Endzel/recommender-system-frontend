@@ -74,6 +74,10 @@
     "webpack-dev-server": "^5.2.2",
     "webpack-merge": "^6.0.1"
   },
+  "overrides": {
+    "serialize-javascript": "^7.0.1",
+    "mocha": "^11.7.5"
+  },
   "engines": {
     "node": ">= 14.0.0",
     "npm": ">= 6.0.0"
