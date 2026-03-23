@@ -22,7 +22,7 @@
     "bootstrap-vue-next": "^0.43.8",
     "hover.css": "^2.3.2",
     "vue": "^3.5.30",
-    "vue-multiselect": "^3.0.0-beta.3",
+    "vue-multiselect": "^3.5.0",
     "vue-router": "^5.0.4",
     "vue3-cookies": "^1.0.6",
     "vue3-star-ratings": "^3.0.5",
