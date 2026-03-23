@@ -1,25 +1,29 @@
 'use strict'
-require('./check-versions')()
 
-const ora = require('ora')
 const { rimraf } = require('rimraf')
 const path = require('path')
-const chalk = require('chalk')
 const webpack = require('webpack')
 const config = require('../config')
 const webpackConfig = require('./webpack.prod.conf')
 
-const spinner = ora('building for production...')
-spinner.start()
+;(async () => {
+  await require('./check-versions')()
 
-rimraf(path.join(config.build.assetsRoot, config.build.assetsSubDirectory)).then(() => {
+  const ora = (await import('ora')).default
+  const chalk = (await import('chalk')).default
+
+  const spinner = ora('building for production...')
+  spinner.start()
+
+  await rimraf(path.join(config.build.assetsRoot, config.build.assetsSubDirectory))
+
   webpack(webpackConfig, (err, stats) => {
     spinner.stop()
     if (err) throw err
     process.stdout.write(stats.toString({
       colors: true,
       modules: false,
-      children: false, // If you are using ts-loader, setting this to true will make TypeScript errors show up during build.
+      children: false,
       chunks: false,
       chunkModules: false
     }) + '\n\n')
@@ -35,6 +39,4 @@ rimraf(path.join(config.build.assetsRoot, config.build.assetsSubDirectory)).then
       '  Opening index.html over file:// won\'t work.\n'
     ))
   })
-}).catch(err => {
-  if (err) throw err
-})
+})()

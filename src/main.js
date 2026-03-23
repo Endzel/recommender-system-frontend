@@ -10,13 +10,6 @@ import App from './App'
 import router from './router'
 import store from './store'
 import VueCookie from 'vue3-cookies'
-// import VueLocalStorage from 'vue-ls' // vue-ls not officially Vue 3 compatible, might need replacement or plugin wrapper
-
-// import AsyncComputed from 'vue-async-computed' // Not Vue 3 compatible, check for alternative
-
-//Global imports
-// import '@/components/mixins/index.js' // Converted to plugin plugin
-
 
 // Components
 import GlobalComponents from '@/components/global_components.js'
@@ -30,9 +23,5 @@ app.use(createBootstrap())
 app.use(VueCookie)
 app.use(GlobalComponents)
 app.use(GlobalMixins)
-
-// VueLocalStorage and AsyncComputed might need specific Vue 3 plugins or implementations
-// For now, we will comment them out or basic setup if possible
-// app.use(VueLocalStorage, { namespace: 'recommender__' });
 
 app.mount('#app')

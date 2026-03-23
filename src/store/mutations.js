@@ -1,7 +1,6 @@
 // Store mutations
 import { useCookies } from 'vue3-cookies'
-// import VueLocalStorage from 'vue-ls' // Need replacement
-// For now, mocking ls or using simple localStorage
+
 const ls = {
   get(key) { return localStorage.getItem(key) ? JSON.parse(localStorage.getItem(key)) : null },
   set(key, val) { localStorage.setItem(key, JSON.stringify(val)) },
