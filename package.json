@@ -59,7 +59,7 @@
     "webpack-merge": "^6.0.1"
   },
   "overrides": {
-    "serialize-javascript": "^7.0.1"
+    "serialize-javascript": "^7.0.5"
   },
   "engines": {
     "node": ">= 14.0.0",
