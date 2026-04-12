@@ -17,7 +17,7 @@
   "dependencies": {
     "@babel/runtime": "^7.29.2",
     "@vuepic/vue-datepicker": "^12.1.0",
-    "axios": "^1.14.0",
+    "axios": "^1.15.0",
     "bootstrap": "^5.3.8",
     "bootstrap-vue-next": "^0.44.1",
     "hover.css": "^2.3.2",
