@@ -19,7 +19,7 @@
     "@vuepic/vue-datepicker": "^12.1.0",
     "axios": "^1.15.0",
     "bootstrap": "^5.3.8",
-    "bootstrap-vue-next": "^0.44.1",
+    "bootstrap-vue-next": "^0.44.2",
     "hover.css": "^2.3.2",
     "vue": "^3.5.32",
     "vue-multiselect": "^3.5.0",
