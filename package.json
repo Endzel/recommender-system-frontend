@@ -15,7 +15,7 @@
     "staticpath": "dist"
   },
   "dependencies": {
-    "@babel/runtime": "^7.29.7",
+    "@babel/runtime": "^8.0.0",
     "@vuepic/vue-datepicker": "^14.0.0",
     "axios": "^1.18.0",
     "bootstrap": "^5.3.8",
