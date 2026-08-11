@@ -32,7 +32,7 @@
     "@babel/core": "^8.0.1",
     "@babel/plugin-transform-runtime": "^8.0.1",
     "@babel/preset-env": "^8.0.2",
-    "@vue/compiler-sfc": "^3.5.40",
+    "@vue/compiler-sfc": "^3.5.41",
     "autoprefixer": "^10.5.4",
     "babel-loader": "^10.1.1",
     "chalk": "^6.0.0",
